@@ -15,7 +15,7 @@ var TwitterUi = {
                      this.se["whotofollow"], this.se["trend"],
                      this.se["site_footer"], this.se["fullname"],
                      this.se["at_username"], this.se["item_footer"],
-                     this.se["open_close"]],
+                     this.se["open_close"], this.se["action_label"]],
                     [this.st["hide"]]
                 ],
                 [
@@ -33,6 +33,14 @@ var TwitterUi = {
                 [
                     [this.se["tweet_text"]],
                     [this.st["f16"], this.st["lhigh"]]
+                ],
+                [
+                    [this.se["reply_action"]],
+                    [this.st["rpad35"]]
+                ],
+                [
+                    [this.se["dash_module"]],
+                    [this.st["no_border"]]
                 ],
             ],
             i,
@@ -57,7 +65,10 @@ var TwitterUi = {
         "username": ".username b",
         "at_username": ".username s",
         "tweet_text": ".js-tweet-text",
-        "open_close": ".js-open-close-tweet"
+        "open_close": ".js-open-close-tweet",
+        "reply_action": ".stream-item-header .actions",
+        "action_label": ".opened-tweet.original-tweet .actions b",
+        "dash_module": ".module",
     },
 
     st: {
@@ -69,6 +80,8 @@ var TwitterUi = {
         "f14": "font-size:14px;",
         "f16": "font-size:16px;",
         "lhigh": "line-height: 1.4",
+        "rpad35": "padding-right: 35px",
+        "no_border": "border: 1px none",
     },
 
     format_styles: function (styles) {
