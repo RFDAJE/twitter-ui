@@ -4,7 +4,7 @@
 // @description customize 2012 new twitter ui
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 // @include https://twitter.com/*
-// @version 0.1.1
+// @version 0.2.1
 // ==/UserScript==
 
 var TwitterUi = {
@@ -15,7 +15,8 @@ var TwitterUi = {
                      this.se["whotofollow"], this.se["trend"],
                      this.se["site_footer"], this.se["fullname"],
                      this.se["at_username"], this.se["item_footer"],
-                     this.se["open_close"], this.se["action_label"]],
+                     this.se["open_close"], this.se["action_label"],
+                     this.se["tweet_stat"]],
                     [this.st["hide"]]
                 ],
                 [
@@ -41,6 +42,10 @@ var TwitterUi = {
                 [
                     [this.se["dash_module"]],
                     [this.st["no_border"]]
+                ],
+                [
+                    [this.se["stat_container"]],
+                    [this.st["no_height"]]
                 ],
             ],
             i,
@@ -69,6 +74,8 @@ var TwitterUi = {
         "reply_action": ".stream-item-header .actions",
         "action_label": ".opened-tweet.original-tweet .actions b",
         "dash_module": ".module",
+        "tweet_stat": ".tweet .stats",
+        "stat_container": ".tweet .tweet-stats-container.already-open",
     },
 
     st: {
@@ -82,6 +89,7 @@ var TwitterUi = {
         "lhigh": "line-height: 1.4",
         "rpad35": "padding-right: 35px",
         "no_border": "border: 1px none",
+        "no_height": "height:0;",
     },
 
     format_styles: function (styles) {
