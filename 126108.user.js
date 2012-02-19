@@ -14,7 +14,7 @@ var TwitterUi = {
                     [this.se["head_actions"], this.se["meta"],
                      this.se["whotofollow"], this.se["trend"],
                      this.se["site_footer"], this.se["fullname"],
-                     this.se["at_username"], this.se["item_footer"],
+                     this.se["at_username"],
                      this.se["open_close"], this.se["action_label"],
                      this.se["tweet_stat"]],
                     [this.st["hide"]]
