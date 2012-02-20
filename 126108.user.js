@@ -4,7 +4,7 @@
 // @description customize 2012 new twitter ui
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 // @include https://twitter.com/*
-// @version 0.2.3
+// @version 0.2.4
 // ==/UserScript==
 
 var TwitterUi = {
@@ -66,7 +66,7 @@ var TwitterUi = {
         "trend": ".component > .trends-inner",
         "site_footer": ".component > .site-footer",
         "item_footer": ".stream-item-footer",
-        "fullname": ".fullname",
+        "fullname": ".stream-item-header .fullname",
         "username": ".username b",
         "at_username": ".username s",
         "tweet_text": ".js-tweet-text",
