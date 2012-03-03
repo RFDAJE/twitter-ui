@@ -4,7 +4,7 @@
 // @description customize 2012 new twitter ui
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 // @include https://twitter.com/*
-// @version 0.3
+// @version 0.3.1
 // ==/UserScript==
 
 var TwitterUi = {
