@@ -84,10 +84,6 @@ var TwitterUi = {
         }
     },
 
-    format_username: function($target) {
-        return $target.attr("href").replace("/#!/", "@");
-    },
-
     retweet_handler: function($target, that) {
         var $user_href = $target.find(".pretty-link.js-user-profile-link"),
             $name_block = $($user_href[0]).find("b"),
@@ -97,11 +93,7 @@ var TwitterUi = {
     },
 
     reply_handler: function($target, that) {
-        var $reply_fullname = $target.find("b .js-view-details"),
-            $usernames = $target.find(".twitter-atreply"),
-            username = that.format_username($usernames);
-
-        $reply_fullname.html(username);
+        $target.find("b .js-view-details").html("");
     },
 
     se: {
@@ -139,6 +131,10 @@ var TwitterUi = {
         "rpad35": "padding-right: 35px",
         "no_border": "border: 1px none",
         "no_height": "height:0;",
+    },
+
+    format_username: function($target) {
+        return $target.attr("href").replace("/#!/", "@");
     },
 
     format_styles: function (styles) {
