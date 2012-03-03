@@ -4,11 +4,18 @@
 // @description customize 2012 new twitter ui
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 // @include https://twitter.com/*
-// @version 0.2.4
+// @version 0.3
 // ==/UserScript==
 
 var TwitterUi = {
     init: function() {
+        this.apply_styles();
+
+        // @username patch
+        $(window).on("DOMNodeInserted", "", {"that": this}, this.username_handler);
+    },
+
+    apply_styles: function() {
         var actions = [
                 [
                     [this.se["head_actions"], this.se["meta"],
@@ -56,6 +63,47 @@ var TwitterUi = {
         }
     },
 
+    username_handler: function(e) {
+        var $target = $(e.target), is_retweet, is_reply,
+            that = e.data.that,
+            is_tweet_body = $target.hasClass("tweet") ||
+                            $target.hasClass("js-stream-item");
+
+        if (is_tweet_body) {
+            is_retweet = $target.find(".sm-rt");
+            is_reply = $target.find(".sm-reply");
+
+            if (is_retweet.length) {
+                $(is_retweet[0].nextSibling).remove();
+                that.retweet_handler($target, that);
+            }
+
+            if (is_reply.length) {
+                that.reply_handler($target, that);
+            }
+        }
+    },
+
+    format_username: function($target) {
+        return $target.attr("href").replace("/#!/", "@");
+    },
+
+    retweet_handler: function($target, that) {
+        var $user_href = $target.find(".pretty-link.js-user-profile-link"),
+            $name_block = $($user_href[0]).find("b"),
+            username = that.format_username($user_href);
+
+        $name_block.html(username);
+    },
+
+    reply_handler: function($target, that) {
+        var $reply_fullname = $target.find("b .js-view-details"),
+            $usernames = $target.find(".twitter-atreply"),
+            username = that.format_username($usernames);
+
+        $reply_fullname.html(username);
+    },
+
     se: {
         "head_actions": ".stream-item-header .actions",
         "head_time": ".tweet:hover .time",
@@ -76,6 +124,7 @@ var TwitterUi = {
         "dash_module": ".module",
         "tweet_stat": ".tweet .stats",
         "stat_container": ".tweet .tweet-stats-container.already-open",
+        "single_tweet": ".simple-tweet .actions",
     },
 
     st: {
@@ -107,7 +156,6 @@ var TwitterUi = {
                    this.format_styles(styles), "}"].join("");
         return css;
     }
-
 };
 
 TwitterUi.init();
