@@ -23,7 +23,7 @@ var TwitterUi = {
                      this.se["site_footer"], this.se["fullname"],
                      this.se["at_username"],
                      this.se["open_close"], this.se["action_label"],
-                     this.se["tweet_stat"]],
+                     this.se["tweet_stat"], this.se["detail_label"]],
                     [this.st["hide"]]
                 ],
                 [
@@ -117,6 +117,7 @@ var TwitterUi = {
         "tweet_stat": ".tweet .stats",
         "stat_container": ".tweet .tweet-stats-container.already-open",
         "single_tweet": ".simple-tweet .actions",
+        "detail_label": ".details .js-view-details",
     },
 
     st: {
